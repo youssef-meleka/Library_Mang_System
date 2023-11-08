@@ -1,7 +1,7 @@
 const express = require('express');
 const sequelize = require('./sequelize');
 const booksRouter = require('./routes/books');
-//const borrowersRouter = require('./routes/borrowers');
+const borrowersRouter = require('./routes/borrowers');
 //const borrowingRouter = require('./routes/borrowing');
 
 const app = express();
@@ -11,7 +11,7 @@ sequelize.connect();
 
 // Mount the routes
 app.use('/api/books', booksRouter);
-//app.use('/api/borrowers', borrowersRouter);
+app.use('/api/borrowers', borrowersRouter);
 //app.use('/api/borrowing', borrowingRouter);
 
 // Start the server
