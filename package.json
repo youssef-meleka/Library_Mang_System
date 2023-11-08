@@ -2,7 +2,7 @@
   "name": "library_mang_system",
   "version": "1.0.0",
   "description": "a simple Node js app with API endpoints",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
