@@ -1,5 +1,5 @@
 const express = require('express');
-const sequelize = require('./sequelize');
+const sequelize = require('/sequelize');
 const booksRouter = require('./routes/books');
 const borrowersRouter = require('./routes/borrowers');
 const borrowingRouter = require('./routes/borrowing');
