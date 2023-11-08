@@ -2,7 +2,7 @@ const express = require('express');
 const sequelize = require('./sequelize');
 const booksRouter = require('./routes/books');
 const borrowersRouter = require('./routes/borrowers');
-//const borrowingRouter = require('./routes/borrowing');
+const borrowingRouter = require('./routes/borrowing');
 
 const app = express();
 
@@ -12,9 +12,18 @@ sequelize.connect();
 // Mount the routes
 app.use('/api/books', booksRouter);
 app.use('/api/borrowers', borrowersRouter);
-//app.use('/api/borrowing', borrowingRouter);
+app.use('/api/borrowing', borrowingRouter);
 
-// Start the server
-app.listen(3000, () => {
-  console.log('Server listening on port 3000');
+// Sync the models with the database
+sequelize.sync()
+.then(result =>{
+
+  console.log(result);
+  // Start the server
+  app.listen(3000);
+
+  }).catch (err => {
+    console.log(err);
+
 });
+
