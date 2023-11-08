@@ -1,13 +1,29 @@
-// const mongoose = require('mongoose');
+const Sequelize = require('sequelize');
 
-// const bookSchema = new mongoose.Schema({
-//   title: String,
-//   author: String,
-//   isbn: String,
-//   availableQuantity: Number,
-//   shelfLocation: String,
-// });
+const bookSchema = {
+  title: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  author: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  isbn: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  availableQuantity: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    defaultValue: 0,
+  },
+  shelfLocation: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+};
 
-// const bookModel = mongoose.model('Book', bookSchema);
+const Book = sequelize.define('Book', bookSchema);
 
-// module.exports = bookModel;
+module.exports = Book;

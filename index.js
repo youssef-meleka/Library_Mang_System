@@ -1,10 +1,20 @@
 const express = require('express');
-const routes = require('./routes');
+const sequelize = require('./sequelize');
+const booksRouter = require('./routes/books');
+//const borrowersRouter = require('./routes/borrowers');
+//const borrowingRouter = require('./routes/borrowing');
 
 const app = express();
 
-app.use('/api', routes);
+// Connect to the database
+sequelize.connect();
 
+// Mount the routes
+app.use('/api/books', booksRouter);
+//app.use('/api/borrowers', borrowersRouter);
+//app.use('/api/borrowing', borrowingRouter);
+
+// Start the server
 app.listen(3000, () => {
   console.log('Server listening on port 3000');
 });
