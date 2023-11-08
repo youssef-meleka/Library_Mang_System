@@ -26,4 +26,12 @@ const bookSchema = {
 
 const Book = sequelize.define('Book', bookSchema);
 
+//One-to-one relationship between Book and BorrowingHistory
+Book.hasOne(BorrowingHistory);
+
+//Many-to-many relationship between Book and Borrower
+Book.belongsToMany(Borrower, {
+  through: 'BorrowingHistory',
+});
+
 module.exports = Book;

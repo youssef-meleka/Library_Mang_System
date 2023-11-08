@@ -18,4 +18,12 @@ const borrowerSchema = {
 
 const Borrower = sequelize.define('Borrower', borrowerSchema);
 
+//Many-to-one relationship between Borrower and BorrowingHistory
+Borrower.hasMany(BorrowingHistory);
+
+//Many-to-many relationship between Book and Borrower
+Borrower.belongsToMany(Book, {
+  through: 'BorrowingHistory',
+});
+
 module.exports = Borrower;
