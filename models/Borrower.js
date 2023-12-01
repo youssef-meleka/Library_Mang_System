@@ -1,5 +1,7 @@
+const BorrowingHistory = require('../models/BorrowingHistory');
+const Book = require('../models/Book');
 const Sequelize = require('sequelize');
-const sequelize = require('./sequelize');
+const sequelize = require('../sequelize');
 
 const borrowerSchema = {
   name: {
@@ -19,12 +21,12 @@ const borrowerSchema = {
 
 const Borrower = sequelize.define('Borrower', borrowerSchema);
 
-//Many-to-one relationship between Borrower and BorrowingHistory
-Borrower.hasMany(BorrowingHistory);
+// //Many-to-one relationship between Borrower and BorrowingHistory
+// Borrower.hasMany(BorrowingHistory);
 
-//Many-to-many relationship between Book and Borrower
-Borrower.belongsToMany(Book, {
-  through: 'BorrowingHistory',
-});
+// //Many-to-many relationship between Book and Borrower
+// Borrower.belongsToMany(Book, {
+//   through: 'BorrowingHistory',
+// });
 
 module.exports = Borrower;
